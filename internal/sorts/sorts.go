@@ -9,8 +9,8 @@ func SelectionSort(data *[]int) (compareCount int, shiftCount int) {
 		for j := i + 1; j < length; j++ {
 			if (*data)[j] < (*data)[minIndex] {
 				minIndex = j
-				compareCount++
 			}
+			compareCount++
 		}
 
 		if minIndex != i {
@@ -29,9 +29,9 @@ func BubbleSort(data *[]int) (compareCount int, shiftCount int) {
 		for j := 0; j < length-i-1; j++ {
 			if (*data)[j] > (*data)[j+1] {
 				(*data)[j], (*data)[j+1] = (*data)[j+1], (*data)[j]
-				compareCount++
 				shiftCount++
 			}
+			compareCount++
 		}
 	}
 
