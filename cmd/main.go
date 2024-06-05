@@ -7,6 +7,15 @@ import (
 	"github.com/reikanv/selection-sort/internal/sorts"
 )
 
+func run(datasets [][]int, sorterFunc func(data *[]int) (int, int)) {
+	for i := 0; i < len(datasets); i++ {
+		item := make([]int, len(datasets[i]))
+		copy(item, datasets[i])
+		compareCount, shiftCount := sorterFunc(&item)
+		fmt.Printf("dataset %v: len %v; compare %v; shift %v\n", i+1, len(item), compareCount, shiftCount)
+	}
+}
+
 func main() {
 	gen := datagen.NewDataGenerator(100000)
 	dataset1 := gen.GenIntSlice(26)
@@ -17,60 +26,11 @@ func main() {
 	dataset6 := gen.GenIntSlice(832)
 	dataset7 := gen.GenIntSlice(1663)
 
-	compareCount1, shiftCount1 := sorts.BubbleSort(&dataset1)
-	compareCount2, shiftCount2 := sorts.BubbleSort(&dataset2)
-	compareCount3, shiftCount3 := sorts.BubbleSort(&dataset3)
-	compareCount4, shiftCount4 := sorts.BubbleSort(&dataset4)
-	compareCount5, shiftCount5 := sorts.BubbleSort(&dataset5)
-	compareCount6, shiftCount6 := sorts.BubbleSort(&dataset6)
-	compareCount7, shiftCount7 := sorts.BubbleSort(&dataset7)
+	datasets := [][]int{dataset1, dataset2, dataset3, dataset4, dataset5, dataset6, dataset7}
 
-	fmt.Printf(
-		"ds1: len %v; compare %v; shift %v\n",
-		len(dataset1),
-		compareCount1,
-		shiftCount1,
-	)
+	fmt.Println("bubble sort")
+	run(datasets, sorts.BubbleSort)
 
-	fmt.Printf(
-		"ds2: len %v; compare %v; shift %v\n",
-		len(dataset2),
-		compareCount2,
-		shiftCount2,
-	)
-
-	fmt.Printf(
-		"ds3: len %v; compare %v; shift %v\n",
-		len(dataset3),
-		compareCount3,
-		shiftCount3,
-	)
-
-	fmt.Printf(
-		"ds4: len %v; compare %v; shift %v\n",
-		len(dataset4),
-		compareCount4,
-		shiftCount4,
-	)
-
-	fmt.Printf(
-		"ds5: len %v; compare %v; shift %v\n",
-		len(dataset5),
-		compareCount5,
-		shiftCount5,
-	)
-
-	fmt.Printf(
-		"ds6: len %v; compare %v; shift %v\n",
-		len(dataset6),
-		compareCount6,
-		shiftCount6,
-	)
-
-	fmt.Printf(
-		"ds7: len %v; compare %v; shift %v\n",
-		len(dataset7),
-		compareCount7,
-		shiftCount7,
-	)
+	fmt.Println("selection sort")
+	run(datasets, sorts.SelectionSort)
 }
