@@ -13,11 +13,6 @@ func absPad(pad int) int {
 	return pad
 }
 
-func Right(str string, pad int) string {
-	whitespace := strings.Repeat(" ", absPad(pad-len(str)))
-	return fmt.Sprintf("%s%s", str, whitespace)
-}
-
 func Left(str string, pad int) string {
 	whitespace := strings.Repeat(" ", absPad(pad-len(str)))
 	return fmt.Sprintf("%s%s", whitespace, str)
