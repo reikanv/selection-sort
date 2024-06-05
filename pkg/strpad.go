@@ -24,6 +24,6 @@ func Left(str string, pad int) string {
 }
 
 func TrimFloat(v float64) string {
-	str := fmt.Sprintf("%.7f", v)
+	str := fmt.Sprintf("%.6f", v)
 	return strings.TrimRight(strings.TrimRight(str, "0"), ".")
 }
