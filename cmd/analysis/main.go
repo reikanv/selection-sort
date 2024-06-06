@@ -51,7 +51,6 @@ func run(datasets [][]int, sorterFunc func(data *[]int) (int, int)) {
 
 	fmt.Print("length    | ")
 	for _, r := range res {
-
 		fmt.Printf(strpad.Left("%v |", 14-len(fmt.Sprint(r.datasetLength))+1), r.datasetLength)
 	}
 	fmt.Print("\n")
@@ -105,7 +104,7 @@ func main() {
 	dataset4 := gen.GenIntSlice(208)
 	dataset5 := gen.GenIntSlice(416)
 	dataset6 := gen.GenIntSlice(832)
-	dataset7 := gen.GenIntSlice(1663)
+	dataset7 := gen.GenIntSlice(1664)
 
 	datasets := [][]int{dataset1, dataset2, dataset3, dataset4, dataset5, dataset6, dataset7}
 
